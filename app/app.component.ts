@@ -81,7 +81,7 @@ export class AppComponent implements OnInit{
         this.getIdeas();    
     };
     getIdeas() {
-        this.ideas = this._ideaService.getIdeas();
+        this._ideaService.getIdeas().then(ideas => this.ideas = ideas);
     }
     onSelect(idea:Idea){
         this.selectedIdea = idea;
