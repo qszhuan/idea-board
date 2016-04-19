@@ -1,15 +1,27 @@
 import { Component } from 'angular2/core';
 import { IdeasComponent } from './ideas.component';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+
 @Component({
     selector: "my-app",
     template:`
     <h1>{{title}}</h1>
-    <my-ideas></my-ideas>
+    <a [routerLink]="['Ideas']">Ideas</a>
+    <router-outlet></router-outlet>
     `,
-    directives:[IdeasComponent],
+    directives:[ROUTER_DIRECTIVES],
+    providers:[ROUTER_PROVIDERS]
     
 })
 
+
+@RouteConfig([
+    {
+        path: '/ideas',
+        name: 'Ideas',
+        component: IdeasComponent
+    }
+])
 export class AppComponent{
     title="Idea Board"
 }
