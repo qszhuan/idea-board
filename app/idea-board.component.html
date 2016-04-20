@@ -1,0 +1,12 @@
+
+<h2>Ideas</h2>
+<div>{{board.id}}</div>
+<ul class="ideas">
+    <li *ngFor="#idea of board.ideas" 
+        (click)="onSelect(idea)"
+        [class.selected]="idea === selectedIdea">
+        <span class="badge">{{idea.id}}</span> {{idea.name}} 
+    </li>
+</ul>
+<h1>{{title}}</h1> 
+<my-idea-detail [idea]="selectedIdea"></my-idea-detail>

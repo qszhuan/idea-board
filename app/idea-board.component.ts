@@ -1,23 +1,15 @@
 import { Component, OnInit } from 'angular2/core';
 import { Idea } from './models/idea';
+import { IdeaBoard } from './models/idea-board';
 import { IdeaComponent } from './idea.component';
 import { IdeaService } from './services/idea.service';
+import { IdeaBoardService } from './services/idea-board.service';
+import { RouteParams } from 'angular2/router';
 
 @Component({
     directives:[IdeaComponent],
     selector: "my-ideas",
-    template: `
-    <h2>Ideas</h2>
-    <ul class="ideas">
-        <li *ngFor="#idea of ideas" 
-            (click)="onSelect(idea)"
-            [class.selected]="idea === selectedIdea">
-            <span class="badge">{{idea.id}}</span> {{idea.name}} 
-        </li>
-    </ul>
-    <h1>{{title}}</h1> 
-    <my-idea-detail [idea]="selectedIdea"></my-idea-detail>
-    `,
+    templateUrl: 'app/idea-board.component.html',
     styles: [`
         .selected {
             background-color: #CFD8DC !important;
@@ -73,14 +65,16 @@ import { IdeaService } from './services/idea.service';
 export class IdeaBoardComponent implements OnInit{
     title = "";
     selectedIdea:Idea;
-    ideas :Idea[];
+    board :IdeaBoard;
     
-    constructor(private _ideaService:IdeaService){};
+    constructor(private _ideaBoardService:IdeaBoardService,
+                private _routeParams: RouteParams){};
     ngOnInit(){
-        this.getIdeas();    
+        let id = +this._routeParams.get("id");
+        this.getBoard(id);    
     };
-    getIdeas() {
-        this._ideaService.getIdeas().then(ideas => this.ideas = ideas);
+    getBoard(id) {
+        this._ideaBoardService.getBoard(id).then(board => this.board = board);
     }
     onSelect(idea:Idea){
         this.selectedIdea = idea;

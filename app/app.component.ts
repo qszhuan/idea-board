@@ -9,10 +9,13 @@ import { IdeaBoardService } from './services/idea-board.service';
     selector: "my-app",
     template:`
     <h1>{{title}}</h1>
-    <a [routerLink]="['Ideas']">Ideas</a>
-    <a [routerLink]="['Boards']">Boards</a>
+    <nav>
+        <a [routerLink]="['Boards']">Boards</a>
+    </nav>
     <router-outlet></router-outlet>
     `,
+        // <a [routerLink]="['IdeaBoard']">Board</a>
+    
     directives:[ROUTER_DIRECTIVES],
     providers:[ROUTER_PROVIDERS,IdeaService, IdeaBoardService ]
     
@@ -21,14 +24,15 @@ import { IdeaBoardService } from './services/idea-board.service';
 
 @RouteConfig([
     {
-        path: '/ideas',
-        name: 'Ideas',
+        path: '/board/:id',
+        name: 'IdeaBoard',
         component: IdeaBoardComponent
     },
     {
         path: '/boards',
         name: 'Boards',
-        component: BoardsComponent
+        component: BoardsComponent,
+        useAsDefault:true
     }
 ])
 
