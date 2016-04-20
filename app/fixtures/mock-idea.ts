@@ -1,4 +1,5 @@
-import { Idea } from './idea';
+import { Idea } from '../models/idea';
+import {IdeaBoard} from '../models/idea-board';
 
 export var IDEAS: Idea[] = [
     {id:11, name: "WhoTo?", description:`
@@ -12,4 +13,9 @@ export var IDEAS: Idea[] = [
     * Showers
     * Available carparks (2-5 spots dedicated to the Carsales foundation where it would cost a gold coin donation to book.)"`},
     
-]
+];
+
+export var IDEA_BOARDS: IdeaBoard[] = [
+    {id:1, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
+    {id:2, title: "Hackthon-2015", description: "This is the description of 2015 hackthon.", ideas: IDEAS},
+];

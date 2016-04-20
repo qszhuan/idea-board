@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
-import { IdeasComponent } from './ideas.component';
+import { IdeaBoardComponent } from './idea-board.component';
+import { BoardsComponent } from './boards.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 @Component({
@@ -7,6 +8,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router
     template:`
     <h1>{{title}}</h1>
     <a [routerLink]="['Ideas']">Ideas</a>
+    <a [routerLink]="['Boards']">Boards</a>
     <router-outlet></router-outlet>
     `,
     directives:[ROUTER_DIRECTIVES],
@@ -19,9 +21,15 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router
     {
         path: '/ideas',
         name: 'Ideas',
-        component: IdeasComponent
+        component: IdeaBoardComponent
+    },
+    {
+        path: '/boards',
+        name: 'Boards',
+        component: BoardsComponent
     }
 ])
+
 export class AppComponent{
-    title="Idea Board"
+    title="Board"
 }

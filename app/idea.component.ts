@@ -1,5 +1,5 @@
 import { Component, Input } from 'angular2/core';
-import { Idea } from './idea';
+import { Idea } from './models/idea';
 
 @Component({
     selector: 'my-idea-detail',

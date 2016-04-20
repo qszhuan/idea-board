@@ -1,7 +1,7 @@
 import { Component, OnInit } from 'angular2/core';
-import { Idea } from './idea';
+import { Idea } from './models/idea';
 import { IdeaComponent } from './idea.component';
-import { IdeaService } from './idea.service';
+import { IdeaService } from './services/idea.service';
 
 @Component({
     directives:[IdeaComponent],
@@ -71,7 +71,7 @@ import { IdeaService } from './idea.service';
     
 })
 
-export class IdeasComponent implements OnInit{
+export class IdeaBoardComponent implements OnInit{
     title = "";
     selectedIdea:Idea;
     ideas :Idea[];

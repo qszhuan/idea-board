@@ -1,6 +1,6 @@
 import { Injectable } from 'angular2/core';
-import { IDEAS } from './mock-idea';
-import { Idea } from './idea';
+import { IDEAS, IDEA_BOARDS } from '../fixtures/mock-idea';
+import { Idea } from '../models/idea';
 
 @Injectable()
 export class IdeaService{
