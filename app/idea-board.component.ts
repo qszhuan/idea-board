@@ -5,7 +5,6 @@ import { IdeaService } from './services/idea.service';
 
 @Component({
     directives:[IdeaComponent],
-    providers:[IdeaService],
     selector: "my-ideas",
     template: `
     <h2>Ideas</h2>

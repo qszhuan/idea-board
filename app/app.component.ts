@@ -2,6 +2,8 @@ import { Component } from 'angular2/core';
 import { IdeaBoardComponent } from './idea-board.component';
 import { BoardsComponent } from './boards.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import { IdeaService } from './services/idea.service';
+import { IdeaBoardService } from './services/idea-board.service';
 
 @Component({
     selector: "my-app",
@@ -12,7 +14,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router
     <router-outlet></router-outlet>
     `,
     directives:[ROUTER_DIRECTIVES],
-    providers:[ROUTER_PROVIDERS]
+    providers:[ROUTER_PROVIDERS,IdeaService, IdeaBoardService ]
     
 })
 

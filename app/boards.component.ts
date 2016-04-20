@@ -5,7 +5,6 @@ import {IdeaBoard} from './models/idea-board';
 @Component({
     selector: 'my-boards',
     directives:[],
-    providers:[IdeaBoardService],
     template: `
     <div>This is the boards page. </div>
     <ul class="ideas">
