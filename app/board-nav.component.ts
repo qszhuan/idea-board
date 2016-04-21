@@ -32,7 +32,7 @@ export class BoardNavComponent implements OnInit{
     toggle(){
         
         this.isShown = !this.isShown;
-        this.onToggle.emit(this.isShown);
+        // this.onToggle.emit(this.isShown);
     }
     onClick(btn) {
         console.log("button", btn);
