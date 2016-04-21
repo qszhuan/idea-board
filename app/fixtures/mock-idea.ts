@@ -16,7 +16,12 @@ export var IDEAS: Idea[] = [
 ];
 
 export var IDEA_BOARDS: IdeaBoard[] = [
-    {id:1, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
+    {
+        id:1, 
+        title: "Hackthon-2016", 
+        description: "Grab ‘n Go Lunch available. We’re providing meals from the Lunch Guys in the kitchen space on the Orange floor – they’ll be here for an hour, from 11am, so grab your food and then eat it when you’re ready!", 
+        ideas: IDEAS
+    },
     {id:2, title: "Hackthon-2015", description: "This is the description of 2015 hackthon.", ideas: IDEAS},
     {id:3, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
     {id:4, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},

@@ -7,15 +7,8 @@ import { IdeaBoardService } from './services/idea-board.service';
 
 @Component({
     selector: "my-app",
-    template:`
-    <h1>{{title}}</h1>
-    <nav>
-        <a [routerLink]="['Boards']">Boards</a>
-    </nav>
-    <router-outlet></router-outlet>
-    `,
-        // <a [routerLink]="['IdeaBoard']">Board</a>
-    
+    templateUrl:'app/app.component.html',
+    styleUrls:["app/app.component.css"],
     directives:[ROUTER_DIRECTIVES],
     providers:[ROUTER_PROVIDERS, IdeaService, IdeaBoardService ]
     
@@ -32,10 +25,15 @@ import { IdeaBoardService } from './services/idea-board.service';
         path: '/boards',
         name: 'Boards',
         component: BoardsComponent,
+    },
+    {
+        path: '/',
+        name: 'Home',
+        component: BoardsComponent,
         useAsDefault:true
     }
 ])
 
 export class AppComponent{
-    title="Board"
+    title="Idea Board"
 }

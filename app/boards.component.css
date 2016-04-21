@@ -1,4 +1,19 @@
+body{
+    background-color: #026aa7;
+}
+
+
+
 .board{
     height: 300px;
-    border: 1px solid;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #e2e4e6;
+}
+
+.board:hover{
+    color: #607D8B;
+    background-color: #DDD;
+    cursor: pointer;
 }

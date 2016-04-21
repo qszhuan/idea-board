@@ -1,7 +1,7 @@
 
-<h2>Ideas</h2>
 <div *ngIf="board">
-    <div>{{board.id}}</div>
+    <h2>{{board.title}}</h2>
+    
     <ul class="ideas">
         <li *ngFor="#idea of board.ideas" 
             (click)="onSelect(idea)"
