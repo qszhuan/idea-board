@@ -5,7 +5,10 @@ import { IdeaBoard } from './models/idea-board';
 @Component({
     selector:"board-nav",
     templateUrl:'app/board-nav.component.html',
-    styleUrls:['app/board-nav.component.css']
+    styleUrls:['app/board-nav.component.css'],
+    host: {
+    '(click)': 'onClick($event.target)'
+  }
 })
 
 export class BoardNavComponent implements OnInit{
@@ -30,5 +33,8 @@ export class BoardNavComponent implements OnInit{
         
         this.isShown = !this.isShown;
         this.onToggle.emit(this.isShown);
+    }
+    onClick(btn) {
+        console.log("button", btn);
     }
 }
