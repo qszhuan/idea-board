@@ -17,7 +17,7 @@ import { IdeaBoardService } from './services/idea-board.service';
         // <a [routerLink]="['IdeaBoard']">Board</a>
     
     directives:[ROUTER_DIRECTIVES],
-    providers:[ROUTER_PROVIDERS,IdeaService, IdeaBoardService ]
+    providers:[ROUTER_PROVIDERS, IdeaService, IdeaBoardService ]
     
 })
 

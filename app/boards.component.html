@@ -1,6 +1,6 @@
     <h2>This is the boards page. </h2>
-    <div *ngFor="#board of boards" (click)="gotoBoard(board)" class="col-1-4">
-        <div class="board">
+    <div *ngFor="#board of boards" (click)="gotoBoard(board)" class="boards container-fluid">
+        <div class="board col-md-4">
             <div>{{board.id}}</div>
             <div>{{board.title}}</div>
         </div>

@@ -18,4 +18,7 @@ export var IDEAS: Idea[] = [
 export var IDEA_BOARDS: IdeaBoard[] = [
     {id:1, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
     {id:2, title: "Hackthon-2015", description: "This is the description of 2015 hackthon.", ideas: IDEAS},
+    {id:3, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
+    {id:4, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
+    {id:5, title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
 ];
