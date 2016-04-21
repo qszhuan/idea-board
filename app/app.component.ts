@@ -38,7 +38,7 @@ import { BoardNavComponent } from './board-nav.component';
 export class AppComponent{
     public title:string="Idea Board";
     public showBoardNav:boolean=false;
-    
+
     toggleBoardNavList(){
         this.showBoardNav = !this.showBoardNav;
         console.log(this.showBoardNav)

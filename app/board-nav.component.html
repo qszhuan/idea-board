@@ -1,7 +1,7 @@
-<div class="board-nav">
-    <ul >
-        <li *ngFor="#board of boards" (click)="gotoBoard(board)">
-            {{board.title}}
-        </li> 
-    </ul>
+<div class="board-nav" [class.isShown]="isShown" >
+    <strong>My Boards:</strong>
+    <div *ngFor="#board of boards" (click)="gotoBoard(board)" class="item">
+        <span class="board-thumbnail"></span>
+        <span class="board-title">{{board.title}}</span>
+    </div> 
 </div>
