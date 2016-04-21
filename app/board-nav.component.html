@@ -1,0 +1,7 @@
+<div class="board-nav">
+    <ul >
+        <li *ngFor="#board of boards" (click)="gotoBoard(board)">
+            {{board.title}}
+        </li> 
+    </ul>
+</div>

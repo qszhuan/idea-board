@@ -1,9 +1,11 @@
 <div class="container header">
+    <div (click)="toggleBoardNavList()">Boards</div>
     <nav class="nav navbar-nav">
         <a [routerLink]="['Home']">Home</a>
         <a [routerLink]="['Boards']">Boards</a>
     </nav>
 </div>
+<board-nav [hidden]="!showBoardNav"></board-nav>
 <div class="container">
     <router-outlet></router-outlet>
 </div>

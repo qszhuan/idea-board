@@ -1,0 +1,7 @@
+.board-nav{
+    position: absolute;
+    border: 1px solid;
+    background: white;
+    z-index: 10;
+    margin: 10px;
+}
