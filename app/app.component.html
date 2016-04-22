@@ -1,6 +1,5 @@
 <div class="container header">
     <div (click)="nav.toggle()">Boards</div>
-    <div>{{showBoardNav}}</div>
     <board-nav [(isShown)] = "showBoardNav" (onToggle)="toggleBoardNavList($event)" #nav></board-nav>
     <nav class="nav navbar-nav">
         <a [routerLink]="['Home']">Home</a>
