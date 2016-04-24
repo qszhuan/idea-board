@@ -14,6 +14,7 @@
     left: 0;*/
     /*top: 45px;*/
     z-index: 60;
+    color: black;
 }
 
 .board-nav.isShown{

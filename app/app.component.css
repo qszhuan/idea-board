@@ -1,15 +1,30 @@
 .header{
-    /*position: relative;*/
+    position: relative;
     /*height:30px;*/
     /*padding: 15px;*/
-    /*background: #026aa7;*/
-    /*color:white;*/
+    background: #026aa7;
+    color:white;
 }
 
 .header a{
-    /*color:white;*/
-    /*text-decoration: none;*/
+    color:white;
+    text-decoration: none;
 }
-/*nav{
+nav{
     display: inline;
-}*/
+}
+
+.header .boards{
+    display: inline-block;
+}
+
+.footer{
+    background: #026aa7;
+    color: white;
+}
+
+.footer .container{
+    text-align: center;
+    line-height: 3em;
+    
+}

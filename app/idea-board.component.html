@@ -4,9 +4,12 @@
     
     <div class="ideas container" >
         <div *ngFor="#idea of board.ideas" 
-            (click)="onSelect(idea)" class="idea">
-            <div>{{idea.name}}</div> 
-            <span>{{idea.description}}</span>
+        (click)="onSelect(idea)" class="col-lg-3 col-md-4 col-sm-6"> 
+        <div  class="idea">
+            <div class="title">{{idea.name}}</div> 
+            <div class="description">{{idea.description}}</div>
+        </div>
+            
         </div>
     </div>
     <h1>{{title}}</h1> 
