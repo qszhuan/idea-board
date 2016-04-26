@@ -46,14 +46,15 @@ export class BoardNavComponent implements OnInit{
             console.log('board nav is hidden');
             return true;
         }
-        var clickedComponent = event.target;
+        var target = event.target;
         var inside = false;
         do {
-            if (clickedComponent === this._elementRef.nativeElement) {
+            if (target === this._elementRef.nativeElement) {
                 inside = true;
             }
-            clickedComponent = clickedComponent.parentNode;
-        } while (clickedComponent);
+            target = target.parentNode;
+        } while (target);
+        
         if(!inside){
             this.toggle();
         }
