@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, Output,EventEmitter } from 'angular2/core';
+import { Component, OnInit,Input, Output,EventEmitter, ElementRef } from 'angular2/core';
 import { IdeaBoardService } from './services/idea-board.service';
 import { Router } from 'angular2/router';
 import { IdeaBoard } from './models/idea-board';
@@ -7,20 +7,20 @@ import { IdeaBoard } from './models/idea-board';
     templateUrl:'app/board-nav.component.html',
     styleUrls:['app/board-nav.component.css'],
     host: {
-    '(click)': 'onClick($event.target)'
-  }
+        '(document:click)': 'onClick($event)'
+    }
 })
 
 export class BoardNavComponent implements OnInit{
     public boards: IdeaBoard[] = [];
     @Input()
     public isShown = false;
-    @Output()
-    onToggle = new EventEmitter();
-    
+    private toggled:boolean;
+   
     constructor(
         private _boardService: IdeaBoardService,
-        private _router: Router) {}
+        private _router: Router,
+        private _elementRef: ElementRef) {}
         
     ngOnInit(){
         this._boardService.getBoards().then(boards => this.boards = boards)
@@ -30,11 +30,32 @@ export class BoardNavComponent implements OnInit{
         this._router.navigate(['IdeaBoard', {'id': board.id}])
     }
     toggle(){
-        
+        this.toggled = true;
         this.isShown = !this.isShown;
-        // this.onToggle.emit(this.isShown);
+        
+        return false;
     }
-    onClick(btn) {
-        console.log("button", btn);
+    
+    onClick(event) {
+        if(this.toggled){
+            this.toggled = false;
+            return true;
+        }
+        
+        if(!this.isShown){
+            console.log('board nav is hidden');
+            return true;
+        }
+        var clickedComponent = event.target;
+        var inside = false;
+        do {
+            if (clickedComponent === this._elementRef.nativeElement) {
+                inside = true;
+            }
+            clickedComponent = clickedComponent.parentNode;
+        } while (clickedComponent);
+        if(!inside){
+            this.toggle();
+        }
     }
 }

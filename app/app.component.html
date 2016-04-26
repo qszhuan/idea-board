@@ -1,11 +1,11 @@
 <div class="header  navbar navbar-fixed-top">
     <div class="container">
-        <div (click)="nav.toggle()" class="boards navbar-header">
+        <div (click)="nav.toggle(this)" class="boards navbar-header">
             <div class=" navbar-brand">
                 Boards
             </div>
         </div>
-        <board-nav [(isShown)] = "showBoardNav" (onToggle)="toggleBoardNavList($event)" #nav></board-nav>
+        <board-nav #nav></board-nav>
         <div id = 'navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
