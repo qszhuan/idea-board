@@ -2,7 +2,7 @@
     <h1>Add Board:</h1>
         {{diagnostic}}
     
-    <form *ngIf="active" #boardForm="ngForm">
+    <form #boardForm="ngForm">
       <div class="form-group">
         <label for="title">Title*</label>
         <input type="text" class="form-control" [(ngModel)] = "board.title" required ngControl="name" #name="ngForm">
@@ -15,6 +15,7 @@
         <input type="text" class="form-control" [(ngModel)]="board.description" >
       </div>
       <button (click) = "addBoard(board)" class="btn btn-default" [disabled]="!boardForm.form.valid">Submit</button>
+      <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+      
     </form>
-    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 </div>

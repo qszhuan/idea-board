@@ -20,7 +20,7 @@ export class IdeaBoardService{
     }
     addBoard(board){
         IDEA_BOARDS.push(board);
-        Observable.fromPromise(Promise.resolve(IDEA_BOARDS)).catch(this.handleError);
+        // return Observable.create(x=>{throw new Error('Bad response status: ')}).catch(this.handleError);
     }
     
     private handleError (error: any) {

@@ -13,12 +13,13 @@ export class AddBoardComponent{
     constructor(private _boardService:IdeaBoardService){}
     board:IdeaBoard = new IdeaBoard();
     errorMessage: string;
-    active=true;
     
     addBoard(board){
-        this.active = false;
         this._boardService.addBoard(board);
+        // .subscribe(
+        //              error =>  {
+        //                  this.errorMessage = <any>error;
+        //                 });
         // this.board = new IdeaBoard(); //because ngForm bug
-        this.active = true;
     }    
 }
