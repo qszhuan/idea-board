@@ -15,10 +15,9 @@ export class AddBoardComponent{
     active=true;
     
     addBoard(board){
-        this._boardService.addBoard(board);
         this.active = false;
-        
-        this.board = new IdeaBoard();
+        this._boardService.addBoard(board);
+        // this.board = new IdeaBoard(); //because ngForm bug
         this.active = true;
     }    
 }
