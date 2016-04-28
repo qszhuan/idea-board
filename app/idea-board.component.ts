@@ -22,7 +22,7 @@ export class IdeaBoardComponent implements OnInit{
     constructor(private _ideaBoardService:IdeaBoardService,
                 private _routeParams: RouteParams){};
     ngOnInit(){
-        let id = +this._routeParams.get("id");
+        let id = this._routeParams.get("id");
         this.getBoard(id);    
     };
     getBoard(id) {

@@ -2,10 +2,11 @@ import { Component, OnInit } from 'angular2/core';
 import { IdeaBoardService } from './services/idea-board.service';
 import {IdeaBoard} from './models/idea-board';
 import { Router } from 'angular2/router';
+import {AddBoardComponent} from "./add-board.component";
 
 @Component({
     selector: 'my-boards',
-    directives:[],
+    directives:[AddBoardComponent],
     templateUrl: 'app/boards.component.html',
     styleUrls: ['app/boards.component.css']
 })

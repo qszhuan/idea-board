@@ -18,4 +18,7 @@ export class IdeaBoardService{
     getBoards(): Observable<IdeaBoard[]>{
         return Observable.fromPromise(Promise.resolve(IDEA_BOARDS));
     }
+    addBoard(board){
+        IDEA_BOARDS.push(board);
+    }
 }

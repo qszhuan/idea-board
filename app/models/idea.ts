@@ -1,7 +1,7 @@
 import { TeamMember } from './team-member';
 
 export class Idea{
-    id: number;
+    id: string;
     name: string;
     description: string;
     // likes: number = 0;
