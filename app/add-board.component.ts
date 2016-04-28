@@ -2,25 +2,23 @@ import { Component } from 'angular2/core';
 import { IdeaBoardService } from './services/idea-board.service';
 import {IdeaBoard} from "./models/idea-board";
 import { guid } from './utils';
+import { NgForm } from 'angular2/common';
 @Component({
-    selector: 'add-board',
-    template: `
-    
-    <div>Add Board:</div>
-    <div>Title:</div>
-    <input [(ngModel)] = "board.title" />
-    <div>Description:</div>
-    <input [(ngModel)] = "board.description" />
-    <button (click)="addBoard(board)">Add</button>
-    `,
+    selector: 'board-form',
+    templateUrl:'app/add-board.component.html'
 })
 
 export class AddBoardComponent{
     
     constructor(private _boardService:IdeaBoardService){}
     board:IdeaBoard = new IdeaBoard();
+    active=true;
+    
     addBoard(board){
         this._boardService.addBoard(board);
+        this.active = false;
+        
         this.board = new IdeaBoard();
+        this.active = true;
     }    
 }
