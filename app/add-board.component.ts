@@ -28,6 +28,6 @@ export class AddBoardComponent{
                          this.errorMessage = <any>error;
                         });
                         
-        // this.board = new IdeaBoard(); //because ngForm bug
+        this.board = new IdeaBoard(); //because ngForm bug
     }    
 }
