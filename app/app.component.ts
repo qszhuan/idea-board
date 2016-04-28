@@ -7,13 +7,29 @@ import { IdeaBoardService } from './services/idea-board.service';
 import { BoardNavComponent } from './board-nav.component';
 import { HTTP_PROVIDERS } from 'angular2/http';
 
+import { provide }           from 'angular2/core';
+import { XHRBackend }        from 'angular2/http';
+
+// in-memory web api imports
+import { InMemoryBackendService,
+        SEED_DATA }         from 'a2-in-memory-web-api/core';
+import { BoardData }          from './fixtures/mock-idea';
+
 
 @Component({
     selector: "my-app",
     templateUrl:'app/app.component.html',
     styleUrls:["app/app.component.css"],
     directives:[ROUTER_DIRECTIVES, BoardNavComponent],
-    providers:[ROUTER_PROVIDERS, IdeaService, IdeaBoardService, HTTP_PROVIDERS ]
+    providers:[
+        ROUTER_PROVIDERS, 
+        IdeaService, 
+        IdeaBoardService, 
+        HTTP_PROVIDERS,
+        // in-memory web api providers
+        provide(XHRBackend, { useClass: InMemoryBackendService }), // in-mem server
+        provide(SEED_DATA,  { useClass: BoardData }) // in-mem server data
+        ]
     
 })
 

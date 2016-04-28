@@ -23,12 +23,14 @@ export class BoardsComponent implements OnInit{
         this._boardService.getBoards().subscribe(boards => 
         this.boards = boards);   
     }
+    onAdd(){
+        console.log('added...');
+        this._boardService.getBoards().subscribe(boards => 
+        this.boards = boards);   
+    }
     
     gotoBoard(board){
         this._router.navigate(["IdeaBoard", {id: board.id}]);
-    }
-    addBoard(){
-        this._boardService.getBoards();
     }
 }
 

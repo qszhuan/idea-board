@@ -32,3 +32,10 @@ export var IDEA_BOARDS: IdeaBoard[] = [
     {id:guid(), title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
     {id:guid(), title: "Hackthon-2016", description: "This is the description", ideas: IDEAS},
 ];
+
+export class BoardData {
+  createDb() {
+    let boards = IDEA_BOARDS;
+    return {boards};
+  }
+}
