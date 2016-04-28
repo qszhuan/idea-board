@@ -26,7 +26,7 @@ export class IdeaBoardComponent implements OnInit{
         this.getBoard(id);    
     };
     getBoard(id) {
-        this._ideaBoardService.getBoard(id).then(board => this.board = board);
+        this._ideaBoardService.getBoard(id).subscribe(board => this.board = board);
     }
     onSelect(idea:Idea){
         this.selectedIdea = idea;

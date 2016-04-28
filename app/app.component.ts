@@ -5,13 +5,15 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router
 import { IdeaService } from './services/idea.service';
 import { IdeaBoardService } from './services/idea-board.service';
 import { BoardNavComponent } from './board-nav.component';
+import { HTTP_PROVIDERS } from 'angular2/http';
+
 
 @Component({
     selector: "my-app",
     templateUrl:'app/app.component.html',
     styleUrls:["app/app.component.css"],
     directives:[ROUTER_DIRECTIVES, BoardNavComponent],
-    providers:[ROUTER_PROVIDERS, IdeaService, IdeaBoardService ]
+    providers:[ROUTER_PROVIDERS, IdeaService, IdeaBoardService, HTTP_PROVIDERS ]
     
 })
 

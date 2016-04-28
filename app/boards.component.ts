@@ -12,17 +12,22 @@ import { Router } from 'angular2/router';
 
 export class BoardsComponent implements OnInit{
     boards:IdeaBoard[] = [];
+    errorMessage: string;
     constructor(
         private _boardService:IdeaBoardService,
         private _router: Router
     ){}
     
     ngOnInit(){
-        this._boardService.getBoards().then(boards => this.boards = boards);   
+        this._boardService.getBoards().subscribe(boards => 
+        this.boards = boards);   
     }
     
     gotoBoard(board){
         this._router.navigate(["IdeaBoard", {id: board.id}]);
+    }
+    addBoard(){
+        this._boardService.getBoards();
     }
 }
 
