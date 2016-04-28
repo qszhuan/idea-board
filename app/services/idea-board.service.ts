@@ -11,14 +11,21 @@ export class IdeaBoardService{
     }
     private _boardsUrl = "app/fixtures/boards.json";
     
-    getBoard(id:number){
+    getBoard(id:string){
         let board = IDEA_BOARDS.find(x=>x.id === id);
         return Observable.fromPromise(Promise.resolve(board));
     }
     getBoards(): Observable<IdeaBoard[]>{
-        return Observable.fromPromise(Promise.resolve(IDEA_BOARDS));
+        return Observable.fromPromise(Promise.resolve(IDEA_BOARDS)).catch(this.handleError);
     }
     addBoard(board){
         IDEA_BOARDS.push(board);
+        Observable.fromPromise(Promise.resolve(IDEA_BOARDS)).catch(this.handleError);
+    }
+    
+    private handleError (error: any) {
+        let errMsg = error.message || 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
     }
 }

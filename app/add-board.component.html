@@ -16,4 +16,5 @@
       </div>
       <button (click) = "addBoard(board)" class="btn btn-default" [disabled]="!boardForm.form.valid">Submit</button>
     </form>
+    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 </div>

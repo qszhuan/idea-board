@@ -12,6 +12,7 @@ export class AddBoardComponent{
     
     constructor(private _boardService:IdeaBoardService){}
     board:IdeaBoard = new IdeaBoard();
+    errorMessage: string;
     active=true;
     
     addBoard(board){
