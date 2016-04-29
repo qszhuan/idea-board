@@ -23,10 +23,11 @@ export class BoardsComponent implements OnInit{
         this._boardService.getBoards().subscribe(boards => 
         this.boards = boards);   
     }
-    onAdd(){
+    onAdd(board){
         console.log('added...');
-        this._boardService.getBoards().subscribe(boards => 
-        this.boards = boards);   
+        this.boards.push(board);
+        // this._boardService.getBoards().subscribe(boards => 
+        // this.boards = boards);   
     }
     
     gotoBoard(board){

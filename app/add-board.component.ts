@@ -21,7 +21,7 @@ export class AddBoardComponent{
         this._boardService.addBoard(board)
         .subscribe(
                          board  => {
-                             this.onAdd.emit("added");
+                             this.onAdd.emit(board);
                          },
             
                      error =>  {
