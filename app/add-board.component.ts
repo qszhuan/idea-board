@@ -18,15 +18,15 @@ export class AddBoardComponent{
     errorMessage: string;
     
     addBoard(board){
-        this._boardService.addBoard(board)
-        .subscribe(
-                         board  => {
-                             this.onAdd.emit(board);
-                         },
+        this._boardService.addBoard(board);
+        // .subscribe(
+        //                  board  => {
+        //                      this.onAdd.emit(board);
+        //                  },
             
-                     error =>  {
-                         this.errorMessage = <any>error;
-                        });
+        //              error =>  {
+        //                  this.errorMessage = <any>error;
+        //                 });
                         
         this.board = new IdeaBoard(); //because ngForm bug
     }    

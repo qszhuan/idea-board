@@ -20,8 +20,8 @@ export class BoardsComponent implements OnInit{
     ){}
     
     ngOnInit(){
-        this._boardService.getBoards().subscribe(boards => 
-        this.boards = boards);   
+        this._boardService.boards$.subscribe(boards => this.boards = boards);   
+        this._boardService.getBoards()
     }
     onAdd(board){
         console.log('added...');

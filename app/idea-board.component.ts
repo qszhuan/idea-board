@@ -22,11 +22,12 @@ export class IdeaBoardComponent implements OnInit{
     constructor(private _ideaBoardService:IdeaBoardService,
                 private _routeParams: RouteParams){};
     ngOnInit(){
+        this._ideaBoardService.board$.subscribe(board=>this.board=board);
         let id = this._routeParams.get("id");
         this.getBoard(id);    
     };
     getBoard(id) {
-        this._ideaBoardService.getBoard(id).subscribe(board => this.board = board);
+        this._ideaBoardService.getBoard(id);
     }
     onSelect(idea:Idea){
         this.selectedIdea = idea;

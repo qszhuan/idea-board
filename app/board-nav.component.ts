@@ -23,7 +23,8 @@ export class BoardNavComponent implements OnInit{
         private _elementRef: ElementRef) {}
         
     ngOnInit(){
-        this._boardService.getBoards().subscribe(boards => this.boards = boards)
+        this._boardService.boards$.subscribe(boards => this.boards = boards);
+        this._boardService.getBoards();
     }
     gotoBoard(board){
         this.toggle();
