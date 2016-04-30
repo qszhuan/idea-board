@@ -6,7 +6,7 @@ import { IdeaService } from './services/idea.service';
 import { IdeaBoardService } from './services/idea-board.service';
 import { BoardNavComponent } from './board-nav.component';
 import { HTTP_PROVIDERS } from 'angular2/http';
-
+import { AppStore } from './models/store';
 import { provide }           from 'angular2/core';
 import { XHRBackend }        from 'angular2/http';
 
@@ -24,6 +24,7 @@ import { BoardData }          from './fixtures/mock-idea';
     providers:[
         ROUTER_PROVIDERS, 
         IdeaService, 
+        AppStore,
         IdeaBoardService, 
         HTTP_PROVIDERS,
         // in-memory web api providers

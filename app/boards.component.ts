@@ -3,6 +3,7 @@ import { IdeaBoardService } from './services/idea-board.service';
 import {IdeaBoard} from './models/idea-board';
 import { Router } from 'angular2/router';
 import {AddBoardComponent} from "./add-board.component";
+import { AppStore } from './models/store';
 
 @Component({
     selector: 'my-boards',
@@ -16,11 +17,12 @@ export class BoardsComponent implements OnInit{
     errorMessage: string;
     constructor(
         private _boardService:IdeaBoardService,
+        private appStore: AppStore,
         private _router: Router
     ){}
     
     ngOnInit(){
-        this._boardService.boards$.subscribe(boards => this.boards = boards);   
+        this.appStore.getState().subscribe(store => this.boards = store.boards);   
         this._boardService.getBoards()
     }
     onAdd(board){

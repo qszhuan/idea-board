@@ -2,24 +2,19 @@ import { Injectable } from 'angular2/core';
 import { IDEA_BOARDS } from '../fixtures/mock-idea';
 import { Response, Http } from 'angular2/http';
 import { IdeaBoard } from "../models/idea-board";
+import { Store, AppStore } from '../models/store';
 import {Observable, Observer}     from 'rxjs/Rx';
 import {Headers, RequestOptions} from 'angular2/http';
 
 
+
 @Injectable()
 export class IdeaBoardService{
-    boards$:Observable<IdeaBoard[]>;
-    board$:Observable<IdeaBoard>;
-    private boardsObserver:Observer<IdeaBoard[]>;
-    private boardObserver:Observer<IdeaBoard[]>;
-    private _dataStore = {
-        boards: []
-    };
     private _boardsUrl = "app/boards";
+    private state:Store = new Store();
     
-    constructor(private http:Http){
-        this.boards$ = new Observable(observer =>  this.boardsObserver = observer).share();
-        this.board$ = new Observable(observer =>  this.boardObserver = observer).share();
+    constructor(private http:Http, private appStore:AppStore){
+        this.appStore.getState().subscribe(state=>this.state = state);
     }
     
     getBoard(id:string){
@@ -29,7 +24,9 @@ export class IdeaBoardService{
         .subscribe(boards=>{
             let board = boards.find(x=>x.id === id);
             if(board != undefined){
-                this.boardObserver.next(board);
+                this.state.selectedBoard = board;
+                this.appStore.next(this.state);
+                
             }
         });
         
@@ -40,8 +37,8 @@ export class IdeaBoardService{
         .do(x=>console.log('get boards request.'))
         .map(this.extractData).catch(this.handleError)
         .subscribe(boards=>{
-            this._dataStore.boards = boards;
-            this.boardsObserver.next(this._dataStore.boards);
+            this.state.boards = boards;
+            this.appStore.next(this.state);
         });
     }
     addBoard(board){
@@ -55,8 +52,8 @@ export class IdeaBoardService{
              .catch(this.handleError)
              .subscribe(board =>{
                  if(board.id){
-                     this._dataStore.boards.push(board);
-                     this.boardsObserver.next(this._dataStore.boards);
+                     this.state.boards.push(board);
+                     this.appStore.next(this.state);
                  }
              });
     }

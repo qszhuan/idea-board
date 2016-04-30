@@ -5,6 +5,7 @@ import { IdeaComponent } from './idea.component';
 import { IdeaService } from './services/idea.service';
 import { IdeaBoardService } from './services/idea-board.service';
 import { RouteParams } from 'angular2/router';
+import { AppStore } from './models/store';
 
 @Component({
     directives:[IdeaComponent],
@@ -20,9 +21,10 @@ export class IdeaBoardComponent implements OnInit{
     public board : IdeaBoard;
     
     constructor(private _ideaBoardService:IdeaBoardService,
+    private appStore:AppStore,
                 private _routeParams: RouteParams){};
     ngOnInit(){
-        this._ideaBoardService.board$.subscribe(board=>this.board=board);
+        this.appStore.getState().subscribe(store=>this.board=store.selectedBoard);
         let id = this._routeParams.get("id");
         this.getBoard(id);    
     };

@@ -2,6 +2,7 @@ import { Component, OnInit,Input, Output,EventEmitter, ElementRef } from 'angula
 import { IdeaBoardService } from './services/idea-board.service';
 import { Router } from 'angular2/router';
 import { IdeaBoard } from './models/idea-board';
+import { AppStore } from './models/store';
 @Component({
     selector:"board-nav",
     templateUrl:'app/board-nav.component.html',
@@ -19,12 +20,13 @@ export class BoardNavComponent implements OnInit{
    
     constructor(
         private _boardService: IdeaBoardService,
+        private appStore:AppStore,
         private _router: Router,
         private _elementRef: ElementRef) {}
         
     ngOnInit(){
-        this._boardService.boards$.subscribe(boards => this.boards = boards);
-        this._boardService.getBoards();
+        this.appStore.getState().subscribe(store => this.boards = store.boards);
+        // this._boardService.getBoards();
     }
     gotoBoard(board){
         this.toggle();
