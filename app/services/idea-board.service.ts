@@ -11,13 +11,16 @@ import {Headers, RequestOptions} from 'angular2/http';
 @Injectable()
 export class IdeaBoardService{
     private _boardsUrl = "app/boards";
-    
+    private _getBoardsRequest = this.http.get(this._boardsUrl)
+        .delay(1000)
+        .do(x=>console.log('get boards request.')).share();
+        
     constructor(private http:Http, private appStore:AppStore){
     }
     
     getBoard(id:string){
         this.http.get(this._boardsUrl)
-        .do(x=>console.log('get boards request.'))
+        .do(x=>console.log('get board request.'))
         .map(this.extractData).catch(this.handleError)
         .subscribe(boards=>{
             let board = boards.find(x=>x.id === id);
@@ -30,8 +33,7 @@ export class IdeaBoardService{
         
     }
     getBoards() {
-        this.http.get(this._boardsUrl)
-        .do(x=>console.log('get boards request.'))
+        this._getBoardsRequest
         .map(this.extractData).catch(this.handleError)
         .subscribe(boards=>{
             console.log("loaded boards");
