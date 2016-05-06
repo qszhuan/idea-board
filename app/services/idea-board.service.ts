@@ -11,10 +11,8 @@ import {Headers, RequestOptions} from 'angular2/http';
 @Injectable()
 export class IdeaBoardService{
     private _boardsUrl = "app/boards";
-    private state:Store = new Store();
     
     constructor(private http:Http, private appStore:AppStore){
-        this.appStore.getState().subscribe(state=>this.state = state);
     }
     
     getBoard(id:string){
@@ -24,25 +22,25 @@ export class IdeaBoardService{
         .subscribe(boards=>{
             let board = boards.find(x=>x.id === id);
             if(board != undefined){
-                this.state.selectedBoard = board;
-                this.appStore.next(this.state);
-                
+                var data = this.appStore.getValue();
+                data.selectedBoard = board;
+                this.appStore.next(data);
             }
         });
         
     }
     getBoards() {
         this.http.get(this._boardsUrl)
-        // .delay(1000)
         .do(x=>console.log('get boards request.'))
         .map(this.extractData).catch(this.handleError)
         .subscribe(boards=>{
-            this.state.boards = boards;
-            this.appStore.next(this.state);
+            console.log("loaded boards");
+            var data = this.appStore.getValue();
+            data.boards = boards;
+            this.appStore.next(data);
         });
     }
     addBoard(board){
-        // IDEA_BOARDS.push(board);
         let body = JSON.stringify( board );
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -52,8 +50,9 @@ export class IdeaBoardService{
              .catch(this.handleError)
              .subscribe(board =>{
                  if(board.id){
-                     this.state.boards.push(board);
-                     this.appStore.next(this.state);
+                     var data = this.appStore.getValue();
+                     data.boards.push(board);
+                     this.appStore.next(data);
                  }
              });
     }

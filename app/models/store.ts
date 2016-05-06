@@ -1,6 +1,6 @@
 import { Injectable } from 'angular2/core';
 import { IdeaBoard } from './idea-board';
-import {Observable, Observer}     from 'rxjs/Rx';
+import {Observable, Observer, BehaviorSubject}     from 'rxjs/Rx';
 
 
 export class Store{
@@ -10,16 +10,18 @@ export class Store{
 
 @Injectable()
 export class AppStore{
-    private store:Observable<Store>;
-    private observer:Observer<Store>;
+    private _store:BehaviorSubject<Store> = new BehaviorSubject(new Store());
+    private store:Observable<Store> = this._store.asObservable().share();
     
     constructor(){
-        this.store = new Observable(observer => this.observer = observer).share();
     }
     getState(){
         return this.store;
     }
+    getValue(){
+        return this._store.getValue();
+    }
     next(data){
-        this.observer.next(data);
+        this._store.next(data);
     }
 }

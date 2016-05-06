@@ -26,7 +26,7 @@ export class BoardNavComponent implements OnInit{
         
     ngOnInit(){
         this.appStore.getState().subscribe(store => this.boards = store.boards);
-        // this._boardService.getBoards();
+        this._boardService.getBoards();
     }
     gotoBoard(board){
         this.toggle();
